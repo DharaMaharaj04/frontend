@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import VerticalLayout from './layout/vertical/Vertical';
 import HorizontalLayout from './layout/horizontal/Horizontal';
-
+import SignIn from './pages/sessions/Sign-in';
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
 

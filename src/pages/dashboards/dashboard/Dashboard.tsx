@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card } from 'antd';
+import { Calendar, Card } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
@@ -120,58 +120,10 @@ const DashboardPage = () => {
           </Card>
         </div>
       </div>
-
-      <Card title='Hospital survey'>
-        <ReactEcharts className='chart-container container-h-400' option={hospitalOptions} />
-      </Card>
-
+      
       <div className='row'>
-        <div className='col-sm-12 col-md-6'>
-          <Card>
-            <h4 className='mt-0 mb-1'>$25038</h4>
-            <p className='mb-0' style={{ color: '#9d9d9d' }}>
-              Income in current month
-            </p>
-
-            <ReactEcharts className='chart-container' option={incomeInMonth} />
-          </Card>
-        </div>
-
-        <div className='col-sm-12 col-md-6'>
-          <Card>
-            <h4 className='mt-0 mb-1'>$2195</h4>
-            <p className='mb-0' style={{ color: '#9d9d9d' }}>
-              Income in current week
-            </p>
-
-            <ReactEcharts className='chart-container' option={incomeInWeek} />
-          </Card>
-        </div>
+         <Calendar></Calendar>
       </div>
-
-      <div className='row'>
-        <div className='col-12 col-md-4'>
-          <Card title={'patients age'}>
-            <ReactEcharts className='chart-container container-h-300' option={patientsAgeOptions} />
-          </Card>
-        </div>
-
-        <div className='col-12 col-md-4'>
-          <Card title={'patients gender'}>
-            <ReactEcharts
-              className='chart-container container-h-300'
-              option={patientsGenderOptions}
-            />
-          </Card>
-        </div>
-
-        <div className='col-12 col-md-4'>
-          <Card title={'Departments'}>
-            <ReactEcharts className='chart-container container-h-300' option={departmentsOptions} />
-          </Card>
-        </div>
-      </div>
-
       <Card title='Last appointments' className='mb-0'>
         <AppointmentsTable data={appointments} />
       </Card>
