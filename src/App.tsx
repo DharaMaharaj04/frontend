@@ -37,8 +37,8 @@ const App = () => {
 
   return (
     <Switch>
-      <Route path='/' exact>
-        <Redirect to='/vertical/default-dashboard' />
+      <Route path='/' exact component={SignIn}>
+        {/* <Redirect to='/vertical/default-dashboard' /> */}
       </Route>
 
       <Route path='/public'>
