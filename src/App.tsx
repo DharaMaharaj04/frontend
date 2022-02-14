@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import VerticalLayout from './layout/vertical/Vertical';
 import HorizontalLayout from './layout/horizontal/Horizontal';
 import SignIn from './pages/sessions/Sign-in';
+import SignUp from './pages/sessions/Sign-up';
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
 
@@ -37,8 +38,9 @@ const App = () => {
 
   return (
     <Switch>
-      <Route path='/' exact component={SignIn}>
+      <Route path='/' exact >
         {/* <Redirect to='/vertical/default-dashboard' /> */}
+        <SignUp></SignUp>
       </Route>
 
       <Route path='/public'>
