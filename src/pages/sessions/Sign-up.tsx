@@ -66,17 +66,12 @@ const SignUp = () => {
           <Switch defaultChecked /> <span className='ml-2'>I agree to the Terms and Privacy.</span>
         </div> */}
 
-        <button
-      
-          // onClick={signUp}
-        >
-          Register
-        </button>
+        <button> Register</button>
       </form>
 
-      {/* <p>
+      <p>
         Have an account? <Link to='sign-in'>Sign in!</Link>
-      </p> */}
+      </p>
     </PublicLayout>
   );
 };
