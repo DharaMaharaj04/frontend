@@ -4,7 +4,6 @@ import VerticalLayout from './layout/vertical/Vertical';
 import HorizontalLayout from './layout/horizontal/Horizontal';
 import NotFound from './pages/sessions/404';
 import { defaultRoutes, sessionRoutes } from './routing';
-
 import './App.scss';
 import { useHideLoader } from './hooks/useHideLoader';
 

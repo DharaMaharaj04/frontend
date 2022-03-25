@@ -4,8 +4,8 @@ import { IUser } from '../interfaces/user';
 import axios from 'axios';
 
 async function getDoctors() {
-  const result = await axios.get(`https://webhooks.mongodb-realm.com/api/client/v2.0/app/application-1-yzlwd/service/doctorapi/incoming_webhook/webhook0`);
-  console.log(result);
+  const result = await axios.get('./data/doctors.json');
+  // console.log(result);
   return result.data as IUser[];
 }
 

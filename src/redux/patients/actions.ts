@@ -11,6 +11,7 @@ import {
 
 import { IPatient } from '../../interfaces/patient';
 import axios from 'axios';
+import * as api from '../../api/index';
 
 export const setPatients = (patients: IPatient[]): SetPatientAction => ({
   type: SET_PATIENTS,
@@ -32,14 +33,12 @@ export const editPatient = (patient: IPatient): EditPatientAction => ({
   payload: patient
 });
 
-export const fetchPatients = (url: string) => {
-  return dispatch => {
-    axios
-      .get<IPatient[]>(url)
-      .then(res => res.data)
-      .then(data => {
-        dispatch(setPatients(data));
-      })
-      .catch(err => console.error('Server connections error'));
-  };
+export const fetchPatients = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchPosts();
+
+    dispatch({ type: SET_PATIENTS, payload: data });
+  } catch (error) {
+    console.log('error');
+  }
 };

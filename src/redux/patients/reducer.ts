@@ -40,4 +40,4 @@ function getNewId(patients: IPatient[]) {
     .map((id) => parseInt(id))
     .reduce((largest, id) => Math.max(largest, id + 1), -1)
     .toString();
-}
+  }
