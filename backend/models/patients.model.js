@@ -4,32 +4,30 @@ const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
     img: {
-    type: String,
-    unique: true,
-    trim: true,
-    minlength: 3
+    type: String
   },
     address: {
     type: String,
-    unique: true,
-    trim: true,
     minlength: 3
   },
     name: {
     type: String,
-    unique: true,
-    trim: true,
+    minlength: 3
+  },
+    lastName: {
+    type: String,
+    minlength: 3
+  },
+  fullname: {
+    type: String,
     minlength: 3
   },
     status: {
     type: String,
-    unique: true,
-    trim: true,
     minlength: 3
   },
     gender: {
     type: String,
-    unique: true,
     trim: true,
     minlength: 3
   },
@@ -41,7 +39,11 @@ const patientSchema = new Schema({
   },
     age: {
     type: String,
-    unique: true,
+    trim: true,
+    minlength: 3
+  },
+  lastVisit: {
+    type: String,
     trim: true,
     minlength: 3
   },

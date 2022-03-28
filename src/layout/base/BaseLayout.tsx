@@ -18,7 +18,7 @@ import { IPageData } from '../../interfaces/page';
 
 import './BaseLayout.scss';
 
-const patientsUrl = '/data/patients.json';
+const patientsUrl = 'http://localhost:9000/patients';
 
 type Props = {
   nav: ReactNode;
@@ -39,7 +39,7 @@ const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
   const pageData = useSelector<IAppState, IPageData>((state) => state.pageData);
 
   useEffect(() => {
-    dispatch(fetchPatients(patientsUrl));
+    dispatch(fetchPatients());
   }, [patientsUrl]);
 
   const handleScroll = (event) => {
