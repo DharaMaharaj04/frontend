@@ -19,12 +19,12 @@ export function patientsReducer(
     }
 
     case ADD_PATIENT: {
-      const id = getNewId(state);
-      return [{ ...action.payload, id }, ...state];
+      // const id = getNewId(state);
+      return [{ ...action.payload }, ...state];
     }
 
     case DELETE_PATIENT: {
-      const patients = state.filter((el) => el.id !== action.id);
+      const patients = state.filter((el) => el._id !== action.id);
       return [...patients];
     }
 
@@ -34,10 +34,10 @@ export function patientsReducer(
   }
 }
 
-function getNewId(patients: IPatient[]) {
-  return patients
-    .map((patient) => patient.id)
-    .map((id) => parseInt(id))
-    .reduce((largest, id) => Math.max(largest, id + 1), -1)
-    .toString();
-  }
+// function getNewId(patients: IPatient[]) {
+//   return patients
+//     .map((patient) => patient.id)
+//     .map((id) => parseInt(id))
+//     .reduce((largest, id) => Math.max(largest, id + 1), -1)
+//     .toString();
+//   }

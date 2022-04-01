@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Button, Select, Input } from 'antd';
+import { Button, Select, Input, DatePicker } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import moment from 'moment';
 
 import ImageLoader from './ImageLoader';
 import { hasErrorFactory } from '../../../utils/hasError';
@@ -21,21 +22,21 @@ const defaultSubmitText = 'Add patient';
 const emptyPatient = {
   name: null,
   address: null,
-  status: null,
   age: null,
   number: null,
   gender: null,
-  img: null
+  img: null,
+  id: null
 };
 
 const patientScheme = Yup.object({
   name: Yup.string().required(),
   address: Yup.string().required(),
-  status: Yup.string().required(),
   age: Yup.string().required(),
   number: Yup.string().required(),
   gender: Yup.string().required(),
-  img: Yup.string().required()
+  img: Yup.string().required(),
+  id: Yup.string().required()
 });
 
 const PatientForm = ({
@@ -61,12 +62,12 @@ const PatientForm = ({
     initialValues: patient,
     onSubmit: (values) => {
       onSubmit(values);
+      console.log(values);
       onCancel();
     }
   });
 
   const handleGenderSelect = (value) => setFieldValue('gender', value);
-  const handleStatusSelect = (value) => setFieldValue('status', value);
 
   const hasError = hasErrorFactory(touched, errors);
 
@@ -77,6 +78,10 @@ const PatientForm = ({
 
   const handleImageLoad = (img) => {
     setValues({ ...values, img });
+  };
+  const dateFormat = 'YYYY/MM/DD';
+  const handleChangedate = (birthDate) => {
+    setValues({ ...values, birthDate });
   };
 
   return (
@@ -142,19 +147,6 @@ const PatientForm = ({
         </div>
 
         <div className='form-group'>
-          <Select
-            placeholder='Status'
-            defaultValue={values.status}
-            onChange={handleStatusSelect}
-            className={hasError('status')}
-            onBlur={() => setFieldTouched('status')}
-          >
-            <Select.Option value='Approved'>Approved</Select.Option>
-            <Select.Option value='Pending'>Pending</Select.Option>
-          </Select>
-        </div>
-
-        <div className='form-group'>
           <TextArea
             rows={3}
             name='address'
@@ -165,7 +157,20 @@ const PatientForm = ({
             className={hasError('address')}
           />
         </div>
-
+        <div className='form-group'>
+          <Input
+            placeholder='id'
+            name='id'
+            type='text'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            defaultValue={values.id}
+            className={hasError('id')}
+          />
+        </div>
+        <div className='form-group'>
+        <DatePicker onChange={handleChangedate} defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat}  />
+        </div>
         <div className='d-flex justify-content-between buttons-list settings-actions'>
           <Button danger onClick={handleCancel}>
             Cancel

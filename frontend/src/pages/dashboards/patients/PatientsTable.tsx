@@ -12,7 +12,7 @@ import PatientForm from '../../../layout/components/patients/PatientForm';
 type Props = {
   patients: IPatient[];
   onEditPatient?: (patient: IPatient) => void;
-  onDeletePatient?: (id: string) => void;
+  onDeletePatient?: (_id: string) => void;
 };
 
 type PatientsImgProps = {
@@ -43,7 +43,7 @@ const PatientsTable = ({
   const closeModal = () => setVisibility(false);
 
   const handleShowInfo = () => history.push('/vertical/patient-profile');
-  const handleDeletePatient = (id) => onDeletePatient(id);
+  const handleDeletePatient = (_id) => onDeletePatient(_id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
     setVisibility(true);
@@ -57,7 +57,7 @@ const PatientsTable = ({
       <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
         <span className='icofont icofont-edit-alt' />
       </Button>
-      <Button onClick={handleDeletePatient.bind({}, patient.id)} shape='circle' danger>
+      <Button onClick={handleDeletePatient.bind({}, patient._id)} shape='circle' danger>
         <span className='icofont icofont-ui-delete' />
       </Button>
     </div>
@@ -65,10 +65,10 @@ const PatientsTable = ({
 
   const columns: ColumnProps<IPatient>[] = [
     {
-      // key: 'img',
-      // title: 'Photo',
-      // dataIndex: 'img',
-      // render: (img) => <PatientImg img={img} />
+      key: 'img',
+      title: 'Photo',
+      dataIndex: 'img',
+      render: (img) => <PatientImg img={img} />
     },
     {
       key: 'name',
@@ -116,16 +116,16 @@ const PatientsTable = ({
         </span>
       )
     },
-    {
-      key: 'visit',
-      dataIndex: 'lastVisit',
-      title: 'Last visit',
-      render: (visit) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {visit}
-        </span>
-      )
-    },
+    // {
+    //   key: 'visit',
+    //   dataIndex: 'lastVisit',
+    //   title: 'Last visit',
+    //   render: (visit) => (
+    //     <span className='nowrap' style={{ color: '#a5a5a5' }}>
+    //       {visit}
+    //     </span>
+    //   )
+    // },
     {
       key: 'status',
       dataIndex: 'status',

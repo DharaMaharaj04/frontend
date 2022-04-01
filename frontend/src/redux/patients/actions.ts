@@ -10,12 +10,12 @@ import {
 } from './types';
 
 import { IPatient } from '../../interfaces/patient';
-import axios from 'axios';
+// import axios from 'axios';
 import * as api from '../../api/index';
 
 export const setPatients = (patients: IPatient[]): SetPatientAction => ({
   type: SET_PATIENTS,
-  payload: patients
+  payload: patients,
 });
 
 export const addPatient = (patient: IPatient) => async (dispatch) => {
@@ -28,10 +28,19 @@ export const addPatient = (patient: IPatient) => async (dispatch) => {
   }
 };
 
-export const deletePatient = (id: string): DeletePatientAction => ({
-  type: DELETE_PATIENT,
-  id
-});
+// export const deletePatient = (id: string): DeletePatientAction => ({
+//   type: DELETE_PATIENT,
+//   id
+// });
+export const deletePatient = (id: string) => async (dispatch) => {
+  try {
+    await api.deletePatient(id);
+    
+    dispatch({ type: DELETE_PATIENT, payload: id });
+  } catch (error) {
+    console.log("Error while deleting Pateint");
+  }
+};
 
 export const editPatient = (patient: IPatient): EditPatientAction => ({
   type: EDIT_PATIENT,
