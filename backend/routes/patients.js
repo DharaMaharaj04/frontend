@@ -8,9 +8,9 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/').post((req, res) => {
-  const { id, img, address, name, status, gender, number, age, lastVisit } = req.body;
+  const { id, img, address, name, status, gender, number, age, lastVisit, email, birthDate } = req.body;
 
-  const newPatient = new Patient({ id, img, address, name, status, gender, number, age, lastVisit })
+  const newPatient = new Patient({ id, img, address, name, status, gender, number, age, lastVisit, email, birthDate })
 
   newPatient.save()
     .then(() => res.json(newPatient))

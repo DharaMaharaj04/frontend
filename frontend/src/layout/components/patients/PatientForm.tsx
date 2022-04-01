@@ -26,7 +26,8 @@ const emptyPatient = {
   number: null,
   gender: null,
   img: null,
-  id: null
+  id: null,
+  email: null
 };
 
 const patientScheme = Yup.object({
@@ -36,7 +37,8 @@ const patientScheme = Yup.object({
   number: Yup.string().required(),
   gender: Yup.string().required(),
   img: Yup.string().required(),
-  id: Yup.string().required()
+  id: Yup.string().required(),
+  email: Yup.string().required()
 });
 
 const PatientForm = ({
@@ -80,7 +82,7 @@ const PatientForm = ({
     setValues({ ...values, img });
   };
   const dateFormat = 'YYYY/MM/DD';
-  const handleChangedate = (birthDate) => {
+  const handleChangedate = (date, birthDate) => {
     setValues({ ...values, birthDate });
   };
 
@@ -169,7 +171,18 @@ const PatientForm = ({
           />
         </div>
         <div className='form-group'>
-        <DatePicker onChange={handleChangedate} defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat}  />
+        <Input
+            placeholder='Email'
+            name='email'
+            type='email'
+            onBlur={handleBlur}
+            onChange={handleChange}
+            defaultValue={values.email}
+            className={hasError('email')}
+          />
+        </div>
+        <div className='form-group'>
+        <DatePicker onChange={handleChangedate} />
         </div>
         <div className='d-flex justify-content-between buttons-list settings-actions'>
           <Button danger onClick={handleCancel}>

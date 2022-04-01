@@ -116,27 +116,37 @@ const PatientsTable = ({
         </span>
       )
     },
-    // {
-    //   key: 'visit',
-    //   dataIndex: 'lastVisit',
-    //   title: 'Last visit',
-    //   render: (visit) => (
-    //     <span className='nowrap' style={{ color: '#a5a5a5' }}>
-    //       {visit}
-    //     </span>
-    //   )
-    // },
     {
-      key: 'status',
-      dataIndex: 'status',
-      title: 'Status',
-      render: (status) => (
-        <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
-          {status}
-        </Tag>
-      ),
-      sorter: (a, b) => (a.status > b.status ? 1 : -1)
+      key: 'email',
+      dataIndex: 'email',
+      title: ' Email address',
+      render: (email) => (
+        <span className='nowrap'>
+          {email}
+        </span>
+      )
     },
+    {
+      key: 'birthDate',
+      dataIndex: 'birthDate',
+      title: ' BirthDate',
+      render: (birthDate) => (
+        <span className='nowrap'>
+          {birthDate}
+        </span>
+      )
+    },
+    // {
+    //   key: 'status',
+    //   dataIndex: 'status',
+    //   title: 'Status',
+    //   render: (status) => (
+    //     <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
+    //       {status}
+    //     </Tag>
+    //   ),
+    //   sorter: (a, b) => (a.status > b.status ? 1 : -1)
+    // },
     {
       key: 'actions',
       title: 'Actions',

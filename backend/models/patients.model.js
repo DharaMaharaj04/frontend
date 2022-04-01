@@ -14,6 +14,8 @@ const patientSchema = new Schema({
   number: {type: String, trim: true, maxlength: 10 },
   age: {type: String},
   lastVisit: {type: String,trim: true},
+  email: {type: String,trim: true},
+  birthDate: {type: String,trim: true},
 }, {
 });
 
