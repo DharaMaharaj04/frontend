@@ -18,6 +18,7 @@ export interface AddPatientAction {
 export interface EditPatientAction {
   type: typeof EDIT_PATIENT;
   payload: IPatient;
+  id:string
 }
 
 export interface DeletePatientAction {

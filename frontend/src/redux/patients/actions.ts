@@ -36,16 +36,26 @@ export const deletePatient = (id: string) => async (dispatch) => {
   try {
     await api.deletePatient(id);
     
-    dispatch({ type: DELETE_PATIENT, payload: id });
+    dispatch({ type: DELETE_PATIENT, id });
   } catch (error) {
     console.log("Error while deleting Pateint");
   }
 };
 
-export const editPatient = (patient: IPatient): EditPatientAction => ({
-  type: EDIT_PATIENT,
-  payload: patient
-});
+// export const editPatient = (patient: IPatient): EditPatientAction => ({
+//   type: EDIT_PATIENT,
+//   payload: patient
+// });
+export const editPatient = (patients:IPatient) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePatient(patients);
+    console.log('hi');
+    console.log(data);
+    dispatch({ type: EDIT_PATIENT, payload: data });
+  } catch (error) {
+    console.log("Error on editind patient");
+  }
+};
 
 export const fetchPatients = () => async (dispatch) => {
   try {

@@ -13,9 +13,9 @@ export function patientsReducer(
     }
 
     case EDIT_PATIENT: {
-      const editedPatients = state.map((el) => (el.id !== action.payload.id ? el : action.payload));
-
-      return [...editedPatients];
+      const editedPatients = state.map((el) => (el._id !== action.payload.id ? el : action.payload));
+      console.log('hi'+editedPatients);
+      return [...editedPatients]; 
     }
 
     case ADD_PATIENT: {

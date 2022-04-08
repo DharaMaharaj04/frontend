@@ -8,11 +8,12 @@ import { Avatar, Table, Button, Modal, Tag } from 'antd';
 import { IPatient } from '../../../interfaces/patient';
 
 import PatientForm from '../../../layout/components/patients/PatientForm';
+import { setegid } from 'process';
 
 type Props = {
   patients: IPatient[];
-  onEditPatient?: (patient: IPatient) => void;
-  onDeletePatient?: (_id: string) => void;
+  onEditPatient: (patient: IPatient) => void;
+  onDeletePatient?: (id: string) => void;
 };
 
 type PatientsImgProps = {
@@ -43,9 +44,10 @@ const PatientsTable = ({
   const closeModal = () => setVisibility(false);
 
   const handleShowInfo = () => history.push('/vertical/patient-profile');
-  const handleDeletePatient = (_id) => onDeletePatient(_id);
+  const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
+    // history.push('/patients/' + patient._id);
     setVisibility(true);
   };
 
@@ -54,7 +56,7 @@ const PatientsTable = ({
       <Button shape='circle' onClick={handleShowInfo}>
         <span className='icofont icofont-external-link' />
       </Button>
-      <Button onClick={handleEditPatient.bind({}, patient)} shape='circle' type='primary'>
+      <Button onClick={handleEditPatient.bind({}, patient,patient._id)} shape='circle' type='primary'>
         <span className='icofont icofont-edit-alt' />
       </Button>
       <Button onClick={handleDeletePatient.bind({}, patient._id)} shape='circle' danger>

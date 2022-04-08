@@ -8,9 +8,9 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/').post((req, res) => {
-  const { id, img, address, name, status, gender, number, age, lastVisit, email, birthDate } = req.body;
+  const {id, img, address, name, status, gender, number, age, lastVisit, email, birthDate } = req.body;
 
-  const newPatient = new Patient({ id, img, address, name, status, gender, number, age, lastVisit, email, birthDate })
+  const newPatient = new Patient({id, img, address, name, status, gender, number, age, lastVisit, email, birthDate })
 
   newPatient.save()
     .then(() => res.json(newPatient))
@@ -28,5 +28,26 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/').patch((req, res) => {
+  Patient.findById(req.params.id)
+    .then(patients => {
+      patients.id = req.body.id;
+      patients.img = req.body.img;
+      patients.address = req.body.address;
+      patients.name = req.body.name;
+      patients.status = req.body.status;
+      patients.gender = req.body.gender;
+      patients.number = req.body.number;
+      patients.age = req.body.age;
+      patients.lastVisit = req.body.lastVisit;
+      patients.email = req.body.email;
+      patients.birthDate = req.body.birthDate;
+
+      patients.save()
+        .then(() => res.json('patients updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 module.exports = router;
