@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Select, Input, DatePicker } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import moment from 'moment';
+import moment from 'moment';
 
 import ImageLoader from './ImageLoader';
 import { hasErrorFactory } from '../../../utils/hasError';
@@ -182,7 +182,7 @@ const PatientForm = ({
           />
         </div>
         <div className='form-group'>
-        <DatePicker onChange={handleChangedate}/>
+        <DatePicker name="date" onChange={handleChangedate} defaultValue={moment(values.birthDate, dateFormat)}/>
         </div>
         <div className='d-flex justify-content-between buttons-list settings-actions'>
           <Button danger onClick={handleCancel}>

@@ -6,9 +6,8 @@ import { ColumnProps } from 'antd/es/table';
 import { Avatar, Table, Button, Modal, Tag } from 'antd';
 
 import { IPatient } from '../../../interfaces/patient';
-
+// import editedPatients from '../../../redux/patients/reducer';
 import PatientForm from '../../../layout/components/patients/PatientForm';
-import { setegid } from 'process';
 
 type Props = {
   patients: IPatient[];
@@ -47,7 +46,6 @@ const PatientsTable = ({
   const handleDeletePatient = (id) => onDeletePatient(id);
   const handleEditPatient = (patient: IPatient) => {
     setPatient(patient);
-    // history.push('/patients/' + patient._id);
     setVisibility(true);
   };
 

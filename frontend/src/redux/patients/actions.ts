@@ -1,16 +1,12 @@
 import {
   ADD_PATIENT,
-  AddPatientAction,
   DELETE_PATIENT,
-  DeletePatientAction,
   EDIT_PATIENT,
-  EditPatientAction,
   SET_PATIENTS,
   SetPatientAction
 } from './types';
 
 import { IPatient } from '../../interfaces/patient';
-// import axios from 'axios';
 import * as api from '../../api/index';
 
 export const setPatients = (patients: IPatient[]): SetPatientAction => ({
@@ -27,11 +23,6 @@ export const addPatient = (patient: IPatient) => async (dispatch) => {
     console.log("Error on add patient");
   }
 };
-
-// export const deletePatient = (id: string): DeletePatientAction => ({
-//   type: DELETE_PATIENT,
-//   id
-// });
 export const deletePatient = (id: string) => async (dispatch) => {
   try {
     await api.deletePatient(id);
@@ -41,16 +32,9 @@ export const deletePatient = (id: string) => async (dispatch) => {
     console.log("Error while deleting Pateint");
   }
 };
-
-// export const editPatient = (patient: IPatient): EditPatientAction => ({
-//   type: EDIT_PATIENT,
-//   payload: patient
-// });
 export const editPatient = (patients:IPatient) => async (dispatch) => {
   try {
-    const { data } = await api.updatePatient(patients);
-    console.log('hi');
-    console.log(data);
+    const { data } = await api.editPatient(patients._id,patients);
     dispatch({ type: EDIT_PATIENT, payload: data });
   } catch (error) {
     console.log("Error on editind patient");
@@ -59,8 +43,7 @@ export const editPatient = (patients:IPatient) => async (dispatch) => {
 
 export const fetchPatients = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchPosts();
-    console.log(data);
+    const { data } = await api.fetchPatient();
     dispatch({ type: SET_PATIENTS, payload: data });
   } catch (error) {
     console.log("Error on fetch Patients");

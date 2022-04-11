@@ -28,7 +28,7 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/').patch((req, res) => {
+router.route('/:id').patch((req, res) => {
   Patient.findById(req.params.id)
     .then(patients => {
       patients.id = req.body.id;
@@ -44,7 +44,7 @@ router.route('/').patch((req, res) => {
       patients.birthDate = req.body.birthDate;
 
       patients.save()
-        .then(() => res.json('patients updated!'))
+        .then(() => res.json(patients))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));

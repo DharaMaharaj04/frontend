@@ -13,13 +13,12 @@ export function patientsReducer(
     }
 
     case EDIT_PATIENT: {
-      const editedPatients = state.map((el) => (el._id !== action.payload.id ? el : action.payload));
-      console.log('hi'+editedPatients);
-      return [...editedPatients]; 
+      const editedPatients = state.map((el) => (el._id !== action.payload._id ? el : action.payload));
+
+      return [...editedPatients];
     }
 
     case ADD_PATIENT: {
-      // const id = getNewId(state);
       return [{ ...action.payload }, ...state];
     }
 
@@ -33,11 +32,3 @@ export function patientsReducer(
     }
   }
 }
-
-// function getNewId(patients: IPatient[]) {
-//   return patients
-//     .map((patient) => patient.id)
-//     .map((id) => parseInt(id))
-//     .reduce((largest, id) => Math.max(largest, id + 1), -1)
-//     .toString();
-//   }
