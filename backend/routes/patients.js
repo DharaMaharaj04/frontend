@@ -7,14 +7,14 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// router.route('/add').post((req, res) => {
-//   const username = req.body.username;
+router.route('/').post((req, res) => {
+  const { img, address, name, status, gender, number, age, lastVisit } = req.body;
 
-//   const newUser = new User({username});
+  const newPatient = new PatientMessage({  img, address, name, status, gender, number, age, lastVisit })
 
-//   newUser.save()
-//     .then(() => res.json('User added!'))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+  newPatient.save()
+    .then(() => res.json(newPatient))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 module.exports = router;
