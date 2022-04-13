@@ -64,7 +64,6 @@ const PatientForm = ({
     initialValues: patient,
     onSubmit: (values) => {
       onSubmit(values);
-      console.log(values);
       onCancel();
     }
   });
@@ -182,7 +181,10 @@ const PatientForm = ({
           />
         </div>
         <div className='form-group'>
-        <DatePicker name="date" onChange={handleChangedate} defaultValue={moment(values.birthDate, dateFormat)}/>
+        <DatePicker name="date" 
+          onChange={handleChangedate} 
+          defaultValue={values.birthDate ? moment(values.birthDate) : null }
+        />
         </div>
         <div className='d-flex justify-content-between buttons-list settings-actions'>
           <Button danger onClick={handleCancel}>
