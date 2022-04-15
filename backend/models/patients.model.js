@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
-  id: {type: String},
+  id: {type: String, unique: true},
   img: {type: String},
   address: {type: String, minlength: 3},
   name: {type: String, minlength: 3},

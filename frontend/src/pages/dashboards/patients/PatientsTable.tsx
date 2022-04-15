@@ -64,12 +64,12 @@ const PatientsTable = ({
   );
 
   const columns: ColumnProps<IPatient>[] = [
-    {
-      key: 'img',
-      title: 'Photo',
-      dataIndex: 'img',
-      render: (img) => <PatientImg img={img} />
-    },
+    // {
+    //   key: 'img',
+    //   title: 'Photo',
+    //   dataIndex: 'img',
+    //   render: (img) => <PatientImg img={img} />
+    // },
     {
       key: 'name',
       dataIndex: 'name',
@@ -170,6 +170,7 @@ const PatientsTable = ({
         visible={visibility}
         footer={null}
         onCancel={closeModal}
+        destroyOnClose
         title={<h3 className='title'>Add patient</h3>}
       >
         <PatientForm
