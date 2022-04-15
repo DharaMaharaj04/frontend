@@ -64,7 +64,6 @@ const PatientForm = ({
     initialValues: patient,
     onSubmit: (values) => {
       onSubmit(values);
-      console.log(values);
       onCancel();
     }
   });
