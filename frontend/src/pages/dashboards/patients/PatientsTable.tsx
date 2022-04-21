@@ -64,12 +64,12 @@ const PatientsTable = ({
   );
 
   const columns: ColumnProps<IPatient>[] = [
-    // {
-    //   key: 'img',
-    //   title: 'Photo',
-    //   dataIndex: 'img',
-    //   render: (img) => <PatientImg img={img} />
-    // },
+    {
+      key: 'img',
+      title: 'Photo',
+      dataIndex: 'img',
+      render: (img) => <PatientImg img={img} />
+    },
     {
       key: 'name',
       dataIndex: 'name',
@@ -89,21 +89,10 @@ const PatientsTable = ({
       )
     },
     {
-      key: 'age',
-      dataIndex: 'age',
-      title: 'Age',
-      sorter: (a, b) => a.age - b.age,
-      render: (age) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {age}
-        </span>
-      )
-    },
-    {
       key: 'address',
-      dataIndex: 'address',
+      dataIndex: ['street','city','state','pincode'],
       title: 'Address',
-      render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
+      render: (text,row) => <span style={{ minWidth: 200, display: 'block' }}>{row["street"]} {row["city"]} {row["state"]}-{row["pincode"]}</span>
     },
     {
       key: 'number',
@@ -136,17 +125,6 @@ const PatientsTable = ({
         </span>
       )
     },
-    // {
-    //   key: 'status',
-    //   dataIndex: 'status',
-    //   title: 'Status',
-    //   render: (status) => (
-    //     <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
-    //       {status}
-    //     </Tag>
-    //   ),
-    //   sorter: (a, b) => (a.status > b.status ? 1 : -1)
-    // },
     {
       key: 'actions',
       title: 'Actions',

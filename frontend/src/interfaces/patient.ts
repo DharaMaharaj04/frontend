@@ -8,13 +8,17 @@ export interface IPatient {
   fullName?: string;
   number: string;
   phone?: string;
-  age: number;
+  age?: number;
   gender: string;
-  address: string;
+  address?: string;
   status?: string;
   lastVisit?: string;
   birthDate?: string;
-  email?: string
+  email?: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  pincode?: number
 }
 
 export interface IAppointment {
