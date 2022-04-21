@@ -8,7 +8,6 @@ const patientSchema = new Schema({
   name: {type: String, minlength: 3},
   lastName: {type: String, minlength: 3},
   fullname: {type: String, minlength: 3},
-  status: {type: String, minlength: 3},
   gender: {type: String, trim: true, },
   number: {type: String, trim: true, maxlength: 10 },
   lastVisit: {type: String,trim: true},
