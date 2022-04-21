@@ -8,9 +8,9 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/').post((req, res) => {
-  const {id, img, address, name, status, gender, number, age, lastVisit, email, birthDate } = req.body;
+  const {id, img, name, status, gender, number, lastVisit, email, birthDate, street, city, state, pincode } = req.body;
 
-  const newPatient = new Patient({id, img, address, name, status, gender, number, age, lastVisit, email, birthDate })
+  const newPatient = new Patient({id, img, name, status, gender, number, lastVisit, email, birthDate, street, city, state, pincode })
 
   newPatient.save()
     .then(() => res.json(newPatient))
@@ -33,15 +33,17 @@ router.route('/:id').patch((req, res) => {
     .then(patients => {
       patients.id = req.body.id;
       patients.img = req.body.img;
-      patients.address = req.body.address;
       patients.name = req.body.name;
       patients.status = req.body.status;
       patients.gender = req.body.gender;
       patients.number = req.body.number;
-      patients.age = req.body.age;
       patients.lastVisit = req.body.lastVisit;
       patients.email = req.body.email;
       patients.birthDate = req.body.birthDate;
+      patients.street = req.body.street;
+      patients.city = req.body.city;
+      patients.state = req.body.state;
+      patients.pincode = req.body.pincode;
 
       patients.save()
         .then(() => res.json(patients))
