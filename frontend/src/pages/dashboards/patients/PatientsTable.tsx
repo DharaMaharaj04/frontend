@@ -51,9 +51,9 @@ const PatientsTable = ({
 
   const actions = (patient: IPatient) => (
     <div className='buttons-list nowrap'>
-      <Button shape='circle' onClick={handleShowInfo}>
+      {/* <Button shape='circle' onClick={handleShowInfo}>
         <span className='icofont icofont-external-link' />
-      </Button>
+      </Button> */}
       <Button onClick={handleEditPatient.bind({}, patient,patient._id)} shape='circle' type='primary'>
         <span className='icofont icofont-edit-alt' />
       </Button>
@@ -118,7 +118,7 @@ const PatientsTable = ({
     {
       key: 'birthDate',
       dataIndex: 'birthDate',
-      title: ' BirthDate',
+      title: ' Birthdate',
       render: (birthDate) => (
         <span className='nowrap'>
           {birthDate}

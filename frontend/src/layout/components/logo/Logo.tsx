@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-
+import { Link } from 'react-router-dom';
 import './Logo.scss';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 const Logo = ({ alt = '', height = 'auto', width = 'auto', src, style = {} }: Props) => {
   return (
     <div className='logo' style={style}>
-      <img src={src} alt={alt} width={width} height={height} className='logo-img' />
+      <Link to='#'><img src={src} alt={alt} width={width} height={height} className='logo-img' /></Link>
     </div>
   );
 };

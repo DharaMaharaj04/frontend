@@ -29,7 +29,8 @@ const emptyPatient = {
   number: null,
   gender: null,
   img: null,
-  email: null
+  email: null,
+  birthDate: null
 };
 
 const patientScheme = Yup.object({
@@ -42,7 +43,8 @@ const patientScheme = Yup.object({
   number: Yup.string().required(),
   gender: Yup.string().required(),
   img: Yup.string().required(),
-  email: Yup.string().email('Invalid email').required('Email Required').nullable()
+  birthDate: Yup.string().required(),
+  email: Yup.string().email('Invalid email').required('Email Required').nullable(),
 });
 
 const PatientForm = ({
@@ -195,11 +197,12 @@ const PatientForm = ({
         <div className='row'>
           <div className='col-sm-6 col-12'>
             <div className='form-group'>
-              <DatePicker name="date" 
+              <DatePicker name="birtDate" 
                 placeholder='Birthdate'
                 onChange={handleChangedate}
                 onBlur={handleBlur}
                 defaultValue={values.birthDate ? moment(values.birthDate) : null }
+                className={hasError('birthDate')}
               />
             </div>
           </div>
@@ -237,7 +240,7 @@ const PatientForm = ({
             Cancel
           </Button>
 
-          <Button disabled={!isValid} type='primary' htmlType='submit'>
+          <Button type='primary' htmlType='submit'>
             {submitText}
           </Button>
         </div>
