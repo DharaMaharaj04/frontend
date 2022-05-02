@@ -2,9 +2,9 @@ import { IRoute } from '../interfaces/routing';
 
 import SettingsPage from '../pages/settings/Settings';
 
+import ApposPage from '../pages/dashboards/appointment/Appos';
 import PatientsPage from '../pages/dashboards/patients/Patients';
 import DashboardPage from '../pages/dashboards/dashboard/Dashboard';
-import AppointmentsPage from '../pages/dashboards/appointments/AppointmentsPage';
 import DoctorsPage from '../pages/dashboards/doctors/Doctors';
 import AlertsPage from '../pages/components/AlertsPage';
 import AutocompletePage from '../pages/components/AutocompletePage';
@@ -53,16 +53,16 @@ export const defaultRoutes: IRoute[] = [
     component: SettingsPage
   },
   {
+    path: 'appointments',
+    component: ApposPage
+  },
+  {
     path: 'patients',
     component: PatientsPage
   },
   {
     path: 'default-dashboard',
     component: DashboardPage
-  },
-  {
-    path: 'appointments',
-    component: AppointmentsPage
   },
   {
     path: 'doctors',

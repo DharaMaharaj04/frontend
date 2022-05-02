@@ -9,6 +9,7 @@ import SettingsForm from '../components/settings/SettingsForm';
 
 import { updateSettings, resetSettings } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
+import { fetchAppointments } from '../../redux/appointments/actions';
 
 import className from '../../utils/class-names';
 
@@ -19,6 +20,7 @@ import { IPageData } from '../../interfaces/page';
 import './BaseLayout.scss';
 
 const patientsUrl = 'http://localhost:9000/patients';
+const appointmentsUrl = 'http://localhost:9000/appointments';
 
 type Props = {
   nav: ReactNode;
@@ -41,6 +43,10 @@ const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
   useEffect(() => {
     dispatch(fetchPatients());
   }, [patientsUrl]);
+  
+  useEffect(() => {
+    dispatch(fetchAppointments());
+  }, [appointmentsUrl]);
 
   const handleScroll = (event) => {
     setScrolled(event.target.scrollTop > 0);

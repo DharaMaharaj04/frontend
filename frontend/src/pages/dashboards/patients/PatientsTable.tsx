@@ -6,7 +6,6 @@ import { ColumnProps } from 'antd/es/table';
 import { Avatar, Table, Button, Modal, Tag } from 'antd';
 
 import { IPatient } from '../../../interfaces/patient';
-// import editedPatients from '../../../redux/patients/reducer';
 import PatientForm from '../../../layout/components/patients/PatientForm';
 
 type Props = {
@@ -51,9 +50,9 @@ const PatientsTable = ({
 
   const actions = (patient: IPatient) => (
     <div className='buttons-list nowrap'>
-      <Button shape='circle' onClick={handleShowInfo}>
+      {/* <Button shape='circle' onClick={handleShowInfo}>
         <span className='icofont icofont-external-link' />
-      </Button>
+      </Button> */}
       <Button onClick={handleEditPatient.bind({}, patient,patient._id)} shape='circle' type='primary'>
         <span className='icofont icofont-edit-alt' />
       </Button>
@@ -89,21 +88,10 @@ const PatientsTable = ({
       )
     },
     {
-      key: 'age',
-      dataIndex: 'age',
-      title: 'Age',
-      sorter: (a, b) => a.age - b.age,
-      render: (age) => (
-        <span className='nowrap' style={{ color: '#a5a5a5' }}>
-          {age}
-        </span>
-      )
-    },
-    {
       key: 'address',
-      dataIndex: 'address',
+      dataIndex: ['street','city','state','pincode'],
       title: 'Address',
-      render: (address) => <span style={{ minWidth: 200, display: 'block' }}>{address}</span>
+      render: (text,row) => <span style={{ minWidth: 200, display: 'block' }}>{row["street"]} {row["city"]} {row["state"]}-{row["pincode"]}</span>
     },
     {
       key: 'number',
@@ -129,24 +117,13 @@ const PatientsTable = ({
     {
       key: 'birthDate',
       dataIndex: 'birthDate',
-      title: ' BirthDate',
+      title: ' Birthdate',
       render: (birthDate) => (
         <span className='nowrap'>
           {birthDate}
         </span>
       )
     },
-    // {
-    //   key: 'status',
-    //   dataIndex: 'status',
-    //   title: 'Status',
-    //   render: (status) => (
-    //     <Tag style={{ borderRadius: 20 }} color={status === 'Approved' ? '#b7ce63' : '#cec759'}>
-    //       {status}
-    //     </Tag>
-    //   ),
-    //   sorter: (a, b) => (a.status > b.status ? 1 : -1)
-    // },
     {
       key: 'actions',
       title: 'Actions',
@@ -155,7 +132,6 @@ const PatientsTable = ({
   ];
 
   const pagination = patients.length <= 10 ? false : {};
-
   return (
     <>
       <Table
@@ -170,6 +146,7 @@ const PatientsTable = ({
         visible={visibility}
         footer={null}
         onCancel={closeModal}
+        destroyOnClose
         title={<h3 className='title'>Add patient</h3>}
       >
         <PatientForm

@@ -2,7 +2,7 @@ import { IPatient } from '../interfaces/patient';
 
 export function useGetUser(): IPatient {
   return {
-    age: 25,
+    // age: 25,
     name: 'Liam',
     lastName: 'Jouns',
     number: '0126596578',
