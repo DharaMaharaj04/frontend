@@ -18,6 +18,10 @@ connection.once('open', () => {
 });
 const patientRouter = require('./routes/patients');
 app.use('/patients', patientRouter);
+
+const appointmentRouter = require('./routes/appointments');
+app.use('/appointments', appointmentRouter);
+
 app.use(express.static('public'));
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
