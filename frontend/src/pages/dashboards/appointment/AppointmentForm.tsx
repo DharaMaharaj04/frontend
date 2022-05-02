@@ -61,9 +61,9 @@ const AppointmentForm = ({
   } = useFormik<IAppointment>({
     validationSchema: appointmentSchema,
     initialValues: appointment,
-    onSubmit: (form) => {
-      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}`, img });
-      resetForm();
+    onSubmit: (values) => {
+      onSubmit(values);
+      onCancel();
     }
   });
   const [from, to] = values.fromTo.split('-');
@@ -73,9 +73,6 @@ const AppointmentForm = ({
     setValues({ ...values, from, to });
   }, [appointment]);
 
-  const handleImageLoad = (image) => {
-    setImg(image);
-  };
 
   const handleCancel = () => {
     resetForm();
@@ -87,10 +84,6 @@ const AppointmentForm = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='form-group'>
-          <ImageLoader onLoad={handleImageLoad} src={img} />
-        </div>
-
         <div className='form-group'>
           <Input
             name='name'

@@ -6,7 +6,6 @@ import { ColumnProps } from 'antd/es/table';
 import { Avatar, Table, Button, Modal, Tag } from 'antd';
 
 import { IPatient } from '../../../interfaces/patient';
-// import editedPatients from '../../../redux/patients/reducer';
 import PatientForm from '../../../layout/components/patients/PatientForm';
 
 type Props = {
@@ -133,7 +132,6 @@ const PatientsTable = ({
   ];
 
   const pagination = patients.length <= 10 ? false : {};
-
   return (
     <>
       <Table

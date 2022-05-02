@@ -4,7 +4,6 @@ import { Calendar, Card, Button, Modal } from 'antd';
 
 import ReactEcharts from 'echarts-for-react';
 
-import AppointmentsTable from '../../../layout/components/appointmentsTable/AppointmentsTable';
 import hospitalOptions from './charts/hospital-options';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -234,9 +233,6 @@ const DashboardPage = () => {
           dayMaxEvents={true}
           weekends
         />
-      </Card>
-      <Card title='Last appointments' className='mb-0'>
-        <AppointmentsTable data={appointments} />
       </Card>
     </>
   );
