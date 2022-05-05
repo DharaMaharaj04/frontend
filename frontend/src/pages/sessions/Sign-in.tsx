@@ -4,11 +4,12 @@ import { Button, Form, Input, Switch } from 'antd';
 import { LoginOutlined } from '@ant-design/icons/lib';
 
 import PublicLayout from '../../layout/public/Public';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useForm } from 'antd/es/form/Form';
 import { useNavigateHome } from '../../utils/use-navigate-home';
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import UserPool from '../../UserPool';
+import { useHistory } from 'react-router-dom';
 
 const { Item } = Form;
 
@@ -24,9 +25,10 @@ const SignIn = () => {
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+
   const onSubmit = (event) => {
     event.preventDefault();
-
     const user = new CognitoUser({
       Username: email,
       Pool: UserPool,
@@ -39,6 +41,7 @@ const SignIn = () => {
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
+        history.push('/vertical/default-dashboard');
         console.log("onSuccess: ", data);
       },
       onFailure: (err) => {
