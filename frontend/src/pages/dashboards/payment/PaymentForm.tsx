@@ -58,8 +58,8 @@ const PaymentForm = ({
   } = useFormik<IBilling>({
     validationSchema: paymentSchema,
     initialValues: payment,
-    onSubmit: (values) => {
-      onSubmit(values);
+    onSubmit: (form) => {
+      onSubmit(form);
       onCancel();
     }
   });

@@ -128,7 +128,7 @@ const PaysTable = ({
       <Table
         pagination={pagination}
         className='accent-header'
-        rowKey='id'
+        rowKey='_id'
         dataSource={payments}
         columns={columns}
       />

@@ -1,10 +1,7 @@
  import {
      ADD_PAYMENT,
-     AddPaymentAction,
      DELETE_PAYMENT,
-     DeletePaymentAction,
      EDIT_PAYMENT,
-     EditPaymentAction,
      SET_PAYMENTS,
      SetPaymentAction
    } from './types';
