@@ -26,7 +26,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-
+  const [errorMessage, setErrorMessage] = React.useState("");
   const onSubmit = (event) => {
     event.preventDefault();
     const user = new CognitoUser({
@@ -46,6 +46,7 @@ const SignIn = () => {
       },
       onFailure: (err) => {
         console.error("onFailure: ", err);
+        setErrorMessage("Incorrect username or password");
       },
       newPasswordRequired: (data) => {
         console.log("newPasswordRequired: ", data);
@@ -54,8 +55,7 @@ const SignIn = () => {
   };
   return (
     <PublicLayout bgImg={`${window.origin}/content/login-page.jpg`}>
-      <h4 className='mt-0 mb-1'>Login form</h4>
-
+      {errorMessage && <div className="error"> {errorMessage} </div>}
       <p className='text-color-200'>Login to access your Account</p>
 
       <form onSubmit={onSubmit} className='mb-4'>
@@ -72,9 +72,9 @@ const SignIn = () => {
            type='password' />
         </Item>
 
-        <div className='d-flex align-items-center mb-4'>
+        {/* <div className='d-flex align-items-center mb-4'>
           <Switch defaultChecked /> <span className='ml-2'>Remember me</span>
-        </div>
+        </div> */}
 
         <button>Login</button>
       </form>
