@@ -23,7 +23,7 @@ import ButtonsPage from '../pages/components/ButtonsPage';
 import TextareasPage from '../pages/components/TextAreaPage';
 import DoctorProfilePage from '../pages/medic/DoctorsProfilePage';
 import PatientProfilePage from '../pages/medic/PatientProfilePage';
-import Payments from '../pages/dashboards/payments/Payments';
+import Payments from '../pages/dashboards/payment/PaymentForm';
 import Departments from '../pages/medic/Departments';
 import InvoicesPage from '../pages/services/InvoicesPage';
 import InvoicePage from '../pages/services/InvoicePage';
@@ -46,6 +46,7 @@ import FormValidationPage from '../pages/forms/FormValidationPage';
 import AntdIconsPage from '../pages/icons/AntdIconsPage';
 import IconsOptionsPage from '../pages/icons/IconsOptionsPage';
 import IcofontIconsPage from '../pages/icons/IcofontIconsPage';
+import PaysPage from '../pages/dashboards/payment/Pays';
 
 export const defaultRoutes: IRoute[] = [
   {
@@ -59,6 +60,10 @@ export const defaultRoutes: IRoute[] = [
   {
     path: 'patients',
     component: PatientsPage
+  },
+  {
+    path: 'payments',
+    component: PaysPage
   },
   {
     path: 'default-dashboard',

@@ -10,6 +10,7 @@ import SettingsForm from '../components/settings/SettingsForm';
 import { updateSettings, resetSettings } from '../../redux/settings/actions';
 import { fetchPatients } from '../../redux/patients/actions';
 import { fetchAppointments } from '../../redux/appointments/actions';
+import { fetchPayments } from '../../redux/payments/actions';
 
 import className from '../../utils/class-names';
 
@@ -21,6 +22,7 @@ import './BaseLayout.scss';
 
 const patientsUrl = 'http://localhost:9000/patients';
 const appointmentsUrl = 'http://localhost:9000/appointments';
+const paymentsUrl = 'http://localhost:9000/payments'
 
 type Props = {
   nav: ReactNode;
@@ -47,6 +49,10 @@ const BaseLayout = ({ nav, topNav, sideNav, orientation, children }: Props) => {
   useEffect(() => {
     dispatch(fetchAppointments());
   }, [appointmentsUrl]);
+
+  useEffect(() => {
+    dispatch(fetchPayments());
+  }, [paymentsUrl]);
 
   const handleScroll = (event) => {
     setScrolled(event.target.scrollTop > 0);

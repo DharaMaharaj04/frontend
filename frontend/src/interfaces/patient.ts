@@ -37,14 +37,15 @@ export interface IAppointment {
 }
 
 export interface IBilling {
-  billNo: number;
-  billDate: string;
-  patient: string;
-  doctor: string;
-  charges: number;
-  tax: number;
-  discount: number;
-  total: number;
+  _id?: string;
+  billNo?: number;
+  billDate?: string;
+  patient?: string;
+  doctor?: string;
+  charges?: number;
+  tax?: number;
+  discount?: number;
+  total?: number;
 }
 
 export interface IDepartment {

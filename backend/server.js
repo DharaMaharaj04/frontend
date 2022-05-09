@@ -22,6 +22,9 @@ app.use('/patients', patientRouter);
 const appointmentRouter = require('./routes/appointments');
 app.use('/appointments', appointmentRouter);
 
+const paymentRouter = require('./routes/payments');
+app.use('/payments', paymentRouter);
+
 app.use(express.static('public'));
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
