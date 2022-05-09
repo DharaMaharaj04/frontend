@@ -17,6 +17,29 @@ router.route('/').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
+  router.route('/:id').delete((req, res) => {
+    Payment.findByIdAndDelete(req.params.id)
+      .then(() => res.json('Payment deleted.'))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
   
+  router.route('/:id').patch((req, res) => {
+    Payment.findById(req.params.id)
+      .then(payments => {
+        payments.billNo = req.body.billNo;
+        payments.patient = req.body.patient;
+        payments.doctor = req.body.doctor;
+        payments.billDate = req.body.billDate;
+        payments.charges = req.body.charges;
+        payments.discount = req.body.discount;
+        payments.tax = req.body.tax;
+        payments.total = req.body.total;
+
+        payments.save()
+          .then(() => res.json(payments))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
   
 module.exports = router;

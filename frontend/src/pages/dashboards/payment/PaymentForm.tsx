@@ -128,13 +128,25 @@ const PaymentForm = ({
             type='number'
             name='charges'
             onBlur={handleBlur}
-            placeholder='Number'
+            placeholder='Charges'
             onChange={handleChange}
             defaultValue={values.charges}
             className={hasError('charges')}
           />
         </div>
 
+        <div className='form-group'>
+          <Input
+            type='number'
+            name='tax'
+            onBlur={handleBlur}
+            placeholder='Tax'
+            onChange={handleChange}
+            defaultValue={values.discount}
+            className={hasError('discount')}
+          />
+        </div>
+        
         <div className='form-group'>
           <Input
             type='number'
