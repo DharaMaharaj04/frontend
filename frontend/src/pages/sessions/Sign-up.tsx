@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Form, Input, Switch } from 'antd';
+import { Form, Input } from 'antd';
 
 import PublicLayout from '../../layout/public/Public';
 import { Link } from 'react-router-dom';
@@ -10,14 +10,8 @@ import UserPool from '../../UserPool';
 const { Item } = Form;
 
 const SignUp = () => {
-  const navigateHome = useNavigateHome();
-  const [form] = useForm();
-  const signUp = () => {
-    form
-      .validateFields()
-      .then(() => navigateHome())
-      .catch(() => null);
-  };
+  // const navigateHome = useNavigateHome();
+  // const [form] = useForm();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

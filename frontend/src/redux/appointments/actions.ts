@@ -1,10 +1,7 @@
 import {
     ADD_APPOINTMENT,
-    AddAppointmentAction,
     DELETE_APPOINTMENT,
-    DeleteAppointmentAction,
     EDIT_APPOINTMENT,
-    EditAppointmentAction,
     SET_APPOINTMENTS,
     SetAppointmentAction
   } from './types';

@@ -61,8 +61,8 @@ const AppointmentForm = ({
   } = useFormik<IAppointment>({
     validationSchema: appointmentSchema,
     initialValues: appointment,
-    onSubmit: (values) => {
-      onSubmit(values);
+    onSubmit: (form) => {
+      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
       onCancel();
     }
   });
@@ -135,7 +135,7 @@ const AppointmentForm = ({
               <Input
                 name='from'
                 placeholder='From'
-                defaultValue={from}
+                defaultValue={values.from}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className={hasError('from')}
@@ -148,7 +148,7 @@ const AppointmentForm = ({
               <Input
                 name='to'
                 placeholder='To'
-                defaultValue={to}
+                defaultValue={values.to}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className={hasError('to')}
