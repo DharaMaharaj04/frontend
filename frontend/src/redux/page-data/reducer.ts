@@ -4,7 +4,11 @@ import { IPageData } from '../../interfaces/page';
 const initialState: IPageData = {
   title: '',
   fulFilled: true,
+<<<<<<< HEAD
   breadcrumbs: [{ route: 'default-dashboard', title: 'Home', name: '' }, { title: 'Dashboard' }],
+=======
+  breadcrumbs: [{ route: 'default-dashboard', title: 'Home' }, { title: 'Dashboard' }],
+>>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
 };
 
 export const pageDataReducer = (state: IPageData = initialState, action: PageActionsTypes) => {
