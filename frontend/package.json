@@ -5,11 +5,8 @@
   "dependencies": {
     "@ant-design/compatible": "1.0.8",
     "@ant-design/icons": "4.6.2",
-<<<<<<< HEAD
     "@date-io/date-fns": "^2.14.0",
     "@fullcalendar/core": "^5.11.0",
-=======
->>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
     "@fullcalendar/daygrid": "5.8.0",
     "@fullcalendar/react": "5.8.0",
     "@reduxjs/toolkit": "^1.8.0",
@@ -34,7 +31,6 @@
     "nanoid": "^3.3.1",
     "node-sass": "6.0.1",
     "react": "17.0.2",
-<<<<<<< HEAD
     "react-big-calendar": "^0.40.1",
     "react-chartjs-2": "2.11.1",
     "react-color": "2.19.3",
@@ -44,13 +40,6 @@
     "react-redux": "7.2.4",
     "react-router-dom": "5.2.0",
     "react-router-redux": "^4.0.8",
-=======
-    "react-chartjs-2": "2.11.1",
-    "react-color": "2.19.3",
-    "react-dom": "17.0.2",
-    "react-redux": "7.2.4",
-    "react-router-dom": "5.2.0",
->>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
     "react-scripts": "4.0.3",
     "react-toastify": "^4.1.0",
     "recharts": "2.0.10",

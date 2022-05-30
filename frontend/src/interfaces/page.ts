@@ -8,6 +8,5 @@ export interface IPageData {
 export interface IBreadcrumb {
   title: string;
   route?: string;
-  name?: string;
   color?: string;
 }

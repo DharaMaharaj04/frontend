@@ -74,11 +74,7 @@
       .fc-state-active,
       .ui-state-active {
         background: accent-palette(800);
-<<<<<<< HEAD
         border: accent-palette(800);
-=======
-        border-color: accent-palette(800);
->>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
         color: accent-contrast(800);
       }
       .fc-center {
@@ -105,28 +101,19 @@
     .fc-event,
     .fc-event-dot {
       background-color: accent-palette(500);
-<<<<<<< HEAD
      
     }
     .fc-daygrid-event-dot{
       border: 4px solid#e2eb57 !important;
     }
-=======
-    }
-
->>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
     .fc-event {
       .fc-event-main-frame {
         padding: 0 ($module-rem / 2);
       }
-<<<<<<< HEAD
     .fc-day-today{
         border: 4px solid#57ebc9 !important;
         background-color: rgb(242, 67, 67) !important;
       }
-=======
-
->>>>>>> 43130dd0c2cb219e59d685dd98747f1ddd682a36
       @each $value, $color in $colors {
         &.event-#{$value} {
           background-color: $color !important;
