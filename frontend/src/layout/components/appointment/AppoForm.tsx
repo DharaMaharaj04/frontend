@@ -55,8 +55,8 @@ const AppoForm = ({
     validationSchema: appointmentScheme,
     initialValues: appointment,
     onSubmit: (form) => {
-      //onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
-      onSubmit({ ...form, start: `${form.start} T ${form.from}` });
+      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
+      //onSubmit({ ...form, start: `${form.start} T ${form.from}` });
       onCancel();
     }
   });

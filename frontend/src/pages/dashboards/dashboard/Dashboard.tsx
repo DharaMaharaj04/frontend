@@ -8,7 +8,6 @@ import hospitalOptions from './charts/hospital-options';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { incomeInWeek, incomeInMonth } from './charts/income-options';
-import {Helmet} from 'react-helmet';
 
 import {
   patientsGenderOptions,
