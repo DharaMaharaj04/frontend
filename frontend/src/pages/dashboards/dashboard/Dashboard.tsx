@@ -56,8 +56,6 @@ const DashboardPage = () => {
   };
   const closeModal = () => setModalVisibility(false);
   let modalBody, modalTitle, modalFooter;
-  const history = useHistory();
-  const handleDateClick = () => history.push('/vertical/appointments');
   return (
     <>
       <div className='row'>

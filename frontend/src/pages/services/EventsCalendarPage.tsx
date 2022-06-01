@@ -4,8 +4,12 @@ import { Button, Card, Modal } from 'antd';
 import { IPageData } from '../../interfaces/page';
 
 import FullCalendar from '@fullcalendar/react';
+import { formatDate } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { usePageData } from '../../hooks/usePage';
+import { useFetchPageData,usePageData } from '../../hooks/usePage';
+import { IAppointment } from '../../interfaces/patient';
+import { appointmentsReducer } from '../../redux/appointments/reducer';
+import { fetchAppointment } from '../../api';
 
 const headerOptions = {
   left: 'prev,next today',
@@ -32,81 +36,25 @@ const pageData: IPageData = {
 };
 
 const EventsCalendarPage = () => {
+  const [appointments] = useFetchPageData<IAppointment[]>('http://localhost:7000/appointments', []);
   usePageData(pageData);
   const [event, setEvent] = useState(null);
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  const setDate = (day: number, hour: number = 0) => {
-    const date = new Date();
-
-    date.setDate(date.getDate() + day);
-    date.setHours(date.getHours() + hour);
-
-    return date;
-  };
-
-  const events = [
-    {
-      title: 'Appointment',
-      color: '#e9e165',
-      classNames: ['event-error'],
-      start: setDate(0, 2),
-      end: setDate(0, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    },
-    {
-      title: 'Appointment',
-      color: '#f56565',
-      start: setDate(1, -1),
-      end: setDate(1, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    },
-    {
-      title: 'Appointment',
-      color: '#4299e1',
-      start: setDate(1),
-      classNames: ['event-pink'],
-      end: setDate(1, 3),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    },
-    {
-      title: 'Appointment',
-      color: '#ed5564',
-      classNames: ['event-orange'],
-      start: setDate(1, -3),
-      end: setDate(1, -2),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    },
-    {
-      title: 'Appointment',
-      color: '#e9e165',
-      start: setDate(3, -5),
-      end: setDate(4),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    },
-    {
-      title: 'Appointment',
-      color: '#e9e165',
-      classNames: ['event-green'],
-      start: setDate(5, 10),
-      end: setDate(6),
-      desc:
-        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-    }
-  ];
-
-  const closeModal = () => setModalVisibility(false);
+  const start = formatDate('2018-09-01', {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric',
+    timeZoneName: 'short',
+    timeZone: 'UTC',
+    locale: 'es',
+  })
 
   const handleEventClick = (arg: any) => {
     setEvent(arg.event);
     setModalVisibility(true);
   };
-
+  const closeModal = () => setModalVisibility(false);
   let modalBody, modalTitle, modalFooter;
 
   if (event) {
@@ -147,12 +95,10 @@ const EventsCalendarPage = () => {
   return (
     <>
       <Card className='mb-0'>
-        <FullCalendar
-          eventClick={handleEventClick}
-          events={events}
-          headerToolbar={headerOptions}
+      <FullCalendar
+          events={appointments}
           initialView='dayGridMonth'
-          plugins={[dayGridPlugin]}
+          plugins={[ dayGridPlugin]}
           dayMaxEvents={true}
           weekends
         />

@@ -10,6 +10,7 @@ import { useGetUser } from '../../hooks/useGetUser';
 
 import { IPageData } from '../../interfaces/page';
 import { IPatient } from '../../interfaces/patient';
+import UserPool from '../../UserPool';
 
 const pageData: IPageData = {
   title: 'Edit account',
@@ -196,16 +197,28 @@ const PasswordForm = () => {
 };
 
 const EditAccountPage = () => {
-  const user = useGetUser();
+  const user = UserPool.getCurrentUser();
+  if (user != null) {
+    	user.getSession(function(err, session) {
+    		if (err) {
+    			alert(err.message || JSON.stringify(err));
+    			return;
+    		}
+    		console.log('session validity: ' + session.isValid());
+    		user.getUserAttributes(function(err, result) {
+    			if (err) {
+    			} else {
+    				console.log(result);
+    				console.log(result[2].getValue())
+    			}
+    		});
+    	});
+    }
   usePageData(pageData);
   return (
     <div className='stack' style={{ maxWidth: 690, margin: '0 auto' }}>
-      <UserAvatar className='mt-0' src={user.img} />
-      <AccountForm user={user} />
-
+      <div>{user.getSignInUserSession().getIdToken().payload.email}</div>
       <Divider />
-
-      <PasswordForm />
     </div>
   );
 };
