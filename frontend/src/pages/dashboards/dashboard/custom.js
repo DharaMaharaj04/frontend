@@ -14,10 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     events: [
       {
-        title: "Sales Meeting",
-        start: new Date(y, m, 2, 10, 30),
-        end: new Date(y, m, 2, 11, 30),
-        allDay: true
+        title: "Long Event",
+        start: "2022-05-07",
+        end: "2022-05-10"
       },
       {
         title: "Marketing Meeting",

@@ -55,8 +55,7 @@ const AppoForm = ({
     validationSchema: appointmentScheme,
     initialValues: appointment,
     onSubmit: (form) => {
-      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
-      //onSubmit({ ...form, start: `${form.start} T ${form.from}` });
+      onSubmit({ ...form, start: `${form.date}T${form.from}` ,fromTo: `${form.from} - ${form.to}` });
       onCancel();
     }
   });
@@ -114,13 +113,13 @@ const AppoForm = ({
         </div>
 
         <div className='form-group'>
-          <Input
-            defaultValue={values.start}
-            placeholder='Date'
-            name='start'
+        <Input
+            defaultValue={values.date}
+            placeholder='Date::YYYY-MM-DD'
+            name='date'
             onChange={handleChange}
             onBlur={handleBlur}
-            className={hasError('start')}
+            className={hasError('date')}
           />
         </div>
 
