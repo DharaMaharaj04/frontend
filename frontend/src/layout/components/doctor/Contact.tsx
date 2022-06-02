@@ -41,9 +41,9 @@ const Contact = ({ address, img, name, role, social, className }: Props) => {
         <p className='address'>{address}</p>
 
         <div className='button-box'>
-          <Button type='primary' onClick={handleGoToProfile}>
+          {/* <Button type='primary' onClick={handleGoToProfile}>
             View profile
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
