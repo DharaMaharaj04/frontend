@@ -7,8 +7,7 @@ import { formatDate } from '@fullcalendar/core';
 import hospitalOptions from './charts/hospital-options';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { incomeInWeek, incomeInMonth } from './charts/income-options';
-
+import { incomeInWeek, incomeInMonth } from './charts/income-options'; 
 import {
   patientsGenderOptions,
   departmentsOptions,
