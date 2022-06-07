@@ -8,6 +8,7 @@ const appointmentSchema = new Schema({
   email: {type: String},
   number: {type: String},
   start: {type: String},
+  date:{type: String},
   fromTo: {type: String},
   doctor: {type: String},
   injury: {type: String},

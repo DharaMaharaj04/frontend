@@ -1,13 +1,14 @@
 import React,{ useState } from 'react';
 
 import { Calendar, Card, Button, Modal } from 'antd';
-
+import { useHistory } from 'react-router-dom';
 import ReactEcharts from 'echarts-for-react';
 import { formatDate } from '@fullcalendar/core';
 import hospitalOptions from './charts/hospital-options';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { incomeInWeek, incomeInMonth } from './charts/income-options'; 
+import interactionPlugin from '@fullcalendar/interaction';
+import { incomeInWeek, incomeInMonth } from './charts/income-options';
 import {
   patientsGenderOptions,
   departmentsOptions,
@@ -55,7 +56,6 @@ const DashboardPage = () => {
   };
   const closeModal = () => setModalVisibility(false);
   let modalBody, modalTitle, modalFooter;
-
   return (
     <>
       <div className='row'>
@@ -144,7 +144,7 @@ const DashboardPage = () => {
         <FullCalendar
           events={appointments}
           initialView='dayGridMonth'
-          plugins={[dayGridPlugin]}
+          plugins={[ dayGridPlugin]}
           dayMaxEvents={true}
           weekends
         />

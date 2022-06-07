@@ -8,9 +8,9 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/').post((req, res) => {
-    const {img, title, number, email, start, fromTo, injury, doctor,from, to } = req.body;
+    const {img, title, number, email, start, fromTo, injury, doctor,from, to,date } = req.body;
   
-    const newAppointment = new Appointment({img, title, number, email, start, fromTo, injury, doctor,from, to })
+    const newAppointment = new Appointment({img, title, number, email, start, fromTo, injury, doctor,from, to, date })
   
     newAppointment.save()
       .then(() => res.json(newAppointment))
@@ -36,6 +36,7 @@ router.route('/').post((req, res) => {
         appointments.doctor = req.body.doctor;
         appointments.from = req.body.from;
         appointments.to = req.body.to;
+        appointments.date = req.body.date;
 
         appointments.save()
           .then(() => res.json(appointments))

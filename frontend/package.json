@@ -8,6 +8,7 @@
     "@date-io/date-fns": "^2.14.0",
     "@fullcalendar/core": "^5.11.0",
     "@fullcalendar/daygrid": "5.8.0",
+    "@fullcalendar/interaction": "^5.11.0",
     "@fullcalendar/react": "5.8.0",
     "@reduxjs/toolkit": "^1.8.0",
     "@south-paw/react-vector-maps": "3.1.0",

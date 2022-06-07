@@ -34,6 +34,7 @@ export interface IAppointment {
   injury?: string;
   from?: string;
   to?: string;
+  date?: string
 }
 
 export interface IBilling {

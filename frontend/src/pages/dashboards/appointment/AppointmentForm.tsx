@@ -28,11 +28,12 @@ const emptyAppointment = {
   title: '',
   number: '',
   from: '',
-  to: ''
+  to: '',
+  date:''
 };
 
 const appointmentSchema = Yup.object().shape({
-  start: Yup.string().required(),
+  // start: Yup.string().required(),
   doctor: Yup.string().required(),
   email: Yup.string().required(),
   injury: Yup.string().required(),
@@ -62,15 +63,15 @@ const AppointmentForm = ({
     validationSchema: appointmentSchema,
     initialValues: appointment,
     onSubmit: (form) => {
-      onSubmit({ ...form, fromTo: `${form.from} - ${form.to}` });
+      onSubmit({ ...form, start: `${form.date}T${form.from}`,fromTo: `${form.from} - ${form.to}` });
       onCancel();
     }
   });
-  const [from, to] = values.fromTo.split('-');
+  const [date, from] = values.start.split('T');
   const [img, setImg] = useState(values.img);
 
   useEffect(() => {
-    setValues({ ...values, from, to });
+    setValues({ ...values, date, from });
   }, [appointment]);
 
 
@@ -120,12 +121,12 @@ const AppointmentForm = ({
 
         <div className='form-group'>
           <Input
-            defaultValue={values.start}
+            defaultValue={values.date}
             placeholder='Date::YYYY-MM-DD'
-            name='start'
+            name='date'
             onChange={handleChange}
             onBlur={handleBlur}
-            className={hasError('start')}
+            className={hasError('date')}
           />
         </div>
 

@@ -61,7 +61,7 @@ const HorizontalLayout = ({ children }: Props) => {
 
       <Search layout='vertical' data={searchData} />
 
-      <Actions />
+      
     </Navbar>
   );
 

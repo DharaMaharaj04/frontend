@@ -118,10 +118,10 @@ const ApposTable = ({
         footer={null}
         onCancel={closeModal}
         destroyOnClose
-        title={<h3 className='title'>Add patient</h3>}
+        title={<h3 className='title'>Add Appointment</h3>}
       >
         <AppoForm
-          submitText='Update patient'
+          submitText='Update Appointment'
           onCancel={closeModal}
           onSubmit={onEditAppointment}
           appointment={appointment}

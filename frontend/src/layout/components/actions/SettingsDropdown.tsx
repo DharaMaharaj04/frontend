@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const accountItems = [
   { text: 'Edit account', icon: 'icofont-ui-home', route: '/vertical/edit-account' },
-  { text: 'User profile', icon: 'icofont-ui-user', route: '/vertical/user-profile' },
+  // { text: 'User profile', icon: 'icofont-ui-user', route: '/vertical/user-profile' },
   { text: 'Calendar', icon: 'icofont-ui-calendar', route: '/vertical/events-calendar' },
   { text: 'Settings', icon: 'icofont-ui-settings', route: '/vertical/settings' },
   { text: 'Log Out', icon: 'icofont-logout', route: '/public/sign-in' }
